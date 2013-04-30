@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Don't jump the red light! - GraemeF.com</title>
+  <meta name="author" content="Graeme Foster">
+
+  
+  <meta name="description" content="There’s a good reason why the test-driven development cycle says you
+should always watch a test fail before you write the production code
+that makes &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://graemef.com/blog/2010/02/15/Dont-jump-the-red-light">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="GraemeF.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1814201-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">GraemeF.com</a></h1>
+  
+    <h2>There's nothing quite like whinging in public</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:graemef.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Don't Jump the Red Light!</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-15T20:29:00+00:00" pubdate data-updated="true">Feb 15<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>There’s a good reason why the <a href="http://en.wikipedia.org/wiki/Test-driven_development">test-driven development cycle</a> says you
+should always watch a test fail before you write the production code
+that makes it pass. I was taught a lesson in this today, “school of hard
+knocks” style…</p>
+
+<h3>How did it happen?</h3>
+
+<p>I have a simple class which implements <code>INotifyPropertyChanged</code> and has
+property:</p>
+
+<pre><code>public class MyClass : INotifyPropertyChanged
+{
+    private string _name;
+
+    public string Name
+    {
+        get { return _name; }
+        set
+        {
+            _name = value;
+            PropertyChanged(this, new PropertyChangedEventArgs("Name"));
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged = delegate { };
+}
+</code></pre>
+
+<p>To test that the PropertyChanged event is raised at the appropriate time
+I use <a href="http://www.codeplex.com/caliburn">Caliburn</a>’s handy (and very
+readable) <code>PropertyHasChangedAssertion</code>:</p>
+
+<pre><code>[TestFixture]
+public class MyClassTestFixture
+{
+    [Test]
+    public void Name_WhenSet_RaisesPropertyChanged()
+    {
+        var test = new MyClass();
+
+        test.AssertThatChangeNotificationIsRaisedBy(x =&gt; x.Name);
+    }
+}
+</code></pre>
+
+<p>At the time I obviously thought this was too simple to worry about, saw
+the test passed as expected and moved on. All good… Or so it seemed!
+Fast forward a week or two. I started to get some strange errors – not
+test failures - in my MSBuild output:</p>
+
+<blockquote><p>error : Internal error: An unhandled exception occurred.
+error : System.Exception: No context was provided to test the notification, use When(Action affectProperty) to provide a context.
+error :    at Caliburn.Testability.Assertions.PropertyHasChangedAssertion`2.Finalize()</p></blockquote>
+
+<p>Not only is the message a bit cryptic without any context (e.g. a test)
+but the error was intermittent. Oh joy! After a bit of detective work
+(more than you might think!) I realised that this is because the
+Caliburn’s <code>PropertyHasChangedAssertion</code> checks that you called its
+<code>When(Action affectProperty)</code> method in its finalizer:</p>
+
+<pre><code>~PropertyHasChangedAssertion()
+{
+    if(!_isValidAssertion)
+        throw new Exception(
+            "No context was provided to test the notification, use When(Action affectProperty) to provide a context.");
+}
+</code></pre>
+
+<p>While this makes the test extremely readable (which is, of course,
+extremely important), if you forget to call <code>When()</code>, if and when you
+get an error is up to the non-deterministic finalization gods. An easy
+one to fix:</p>
+
+<pre><code>[Test]
+public void Name_WhenSet_RaisesPropertyChanged()
+{
+    var test = new MyClass();
+
+    test.AssertThatChangeNotificationIsRaisedBy(x =&gt; x.Name)
+        .When(() =&gt; test.Name = "New name");
+}
+</code></pre>
+
+<p>But I didn’t get the feedback that I should have done from doing TDD
+properly, and wasted time as a result.</p>
+
+<h3>What went wrong?</h3>
+
+<p>Here is how TDD is <em>supposed</em> to be performed:</p>
+
+<p><img src="http://bitbybitblog.com/wp-content/uploads/2011/12/tdd_cycle.jpg" alt="TDD cycle" /></p>
+
+<p>Because the code was trivial, I skipped the second step and didn’t check
+that the test failed before I carried on and implemented the property.
+If I hadn’t skipped this step, there’s a good chance that the following
+sequence of events would have occurred:</p>
+
+<ol>
+<li>I write the test, and add an empty property definition to make it
+compile</li>
+<li>I run the test and <em>see that it unexpectedly passes</em></li>
+<li>I scratch my head for a bit, but I’m already looking at the
+offending line of code so it’s much easier to spot the problem</li>
+<li>The penny drops, I spot the mistake and fix it</li>
+<li>I run the test again, and this time it fails. Happy days.</li>
+<li>I implement the property changed notification and carry on</li>
+</ol>
+
+
+<p>Maybe I would have got the error when I ran the test, and that would
+have given me another clue about the cause of the problem.</p>
+
+<h3>It could have been worse!</h3>
+
+<p>In the week or two since I made the mistake I could have carried on to
+use <code>AssertThatChangeNotificationIsRaisedBy</code> in tens or hundreds of
+other tests, which would have made it much harder to find the one with
+the missing <code>When()</code> call. I was lucky that there were only a few uses
+in my tests.</p>
+
+<h3>A lesson learned?</h3>
+
+<p>I hope so! When time is short it can be hard to make yourself go through
+these steps over and over again, but they are all there for a reason –
+<em>to stop us writing code that doesn’t do what we think it does</em>. I will
+be trying especially hard to stick to the steps, but we’ll have to wait
+and see how it goes.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Graeme Foster</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-15T20:29:00+00:00" pubdate data-updated="true">Feb 15<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tdd/'>tdd</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://graemef.com/blog/2010/02/15/Dont-jump-the-red-light/" data-via="GraemeF" data-counturl="http://graemef.com/blog/2010/02/15/Dont-jump-the-red-light/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/" title="Previous Post: How I'm Growing Object-Oriented Software, Guided By Tests">&laquo; How I'm Growing Object-Oriented Software, Guided By Tests</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/" title="Next Post: A quick comparison of some .NET mocking frameworks">A quick comparison of some .NET mocking frameworks &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/30/new-home/">New home</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/02/Reconciling-ReST-and-CQRS/">Reconciling ReST, CQRS and Event Sourcing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/17/Framework-switcheroo/">Framework switcheroo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/">A quick comparison of some .NET mocking frameworks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/02/15/Dont-jump-the-red-light/">Don't jump the red light!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/GraemeF">@GraemeF</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'GraemeF',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/GraemeF?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/GraemeF">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Graeme Foster -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'GraemeF';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://graemef.com/blog/2010/02/15/Dont-jump-the-red-light/';
+        var disqus_url = 'http://graemef.com/blog/2010/02/15/Dont-jump-the-red-light/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: meta | GraemeF.com]]></title>
+  <link href="http://graemef.com/blog/categories/meta/atom.xml" rel="self"/>
+  <link href="http://graemef.com/"/>
+  <updated>2013-04-30T22:12:10+01:00</updated>
+  <id>http://graemef.com/</id>
+  <author>
+    <name><![CDATA[Graeme Foster]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[New home]]></title>
+    <link href="http://graemef.com/blog/2013/04/30/new-home/"/>
+    <updated>2013-04-30T20:28:00+01:00</updated>
+    <id>http://graemef.com/blog/2013/04/30/new-home</id>
+    <content type="html"><![CDATA[<p>Thanks to this being <a href="http://blog.posterous.com/thanks-from-posterous">Posterous' last day</a> I'm
+spending the evening moving my blog to <a href="http://octopress.org/">Octopress</a>, hosted on
+Github.</p>
+
+<p>Fortunately my strategy of creating <em>very few posts</em> has made this task a little less
+arduous than it might otherwise have been.</p>
+]]></content>
+  </entry>
+  
+</feed>

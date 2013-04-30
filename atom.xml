@@ -1,162 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>GraemeF.com</title>
-  <meta name="author" content="Graeme Foster">
-
-  
-  <meta name="description" content="Thanks to this being Posterous&#8217; last day I&#8217;m
-spending the evening moving my blog to Octopress, hosted on
-Github. Fortunately my strategy &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://graemef.com">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="GraemeF.com" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-1814201-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">GraemeF.com</a></h1>
-  
-    <h2>There's nothing quite like whinging in public</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:graemef.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[GraemeF.com]]></title>
+  <link href="http://graemef.com/atom.xml" rel="self"/>
+  <link href="http://graemef.com/"/>
+  <updated>2013-04-30T22:12:10+01:00</updated>
+  <id>http://graemef.com/</id>
+  <author>
+    <name><![CDATA[Graeme Foster]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2013/04/30/new-home/">New Home</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2013-04-30T20:28:00+01:00" pubdate data-updated="true">Apr 30<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Thanks to this being <a href="http://blog.posterous.com/thanks-from-posterous">Posterous&#8217; last day</a> I&#8217;m
+  <entry>
+    <title type="html"><![CDATA[New home]]></title>
+    <link href="http://graemef.com/blog/2013/04/30/new-home/"/>
+    <updated>2013-04-30T20:28:00+01:00</updated>
+    <id>http://graemef.com/blog/2013/04/30/new-home</id>
+    <content type="html"><![CDATA[<p>Thanks to this being <a href="http://blog.posterous.com/thanks-from-posterous">Posterous&#8217; last day</a> I&#8217;m
 spending the evening moving my blog to <a href="http://octopress.org/">Octopress</a>, hosted on
 Github.</p>
 
 <p>Fortunately my strategy of creating <em>very few posts</em> has made this task a little less
 arduous than it might otherwise have been.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/09/02/Reconciling-ReST-and-CQRS/">Reconciling ReST, CQRS and Event Sourcing</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-02T00:00:00+01:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I decided to write this post because it was getting really hard to discuss 140 characters at a time on Twitter, and I just want to get some thoughts down before I go looking for other people&#8217;s solution to the problem.</p>
+  <entry>
+    <title type="html"><![CDATA[Reconciling ReST, CQRS and Event Sourcing]]></title>
+    <link href="http://graemef.com/blog/2012/09/02/Reconciling-ReST-and-CQRS/"/>
+    <updated>2012-09-02T00:00:00+01:00</updated>
+    <id>http://graemef.com/blog/2012/09/02/Reconciling-ReST-and-CQRS</id>
+    <content type="html"><![CDATA[<p>I decided to write this post because it was getting really hard to discuss 140 characters at a time on Twitter, and I just want to get some thoughts down before I go looking for other people&#8217;s solution to the problem.</p>
 
 <p>Over the last couple of years I&#8217;ve learned a lot about ReSTful web API&#8217;s (the kind that use HATEOAS, not the namby-pamby &#8220;it&#8217;s HTTP therefore it&#8217;s ReST&#8221; variety) and have also been intrigued by the simplicity of CQRS+ES to address scalability. I&#8217;ve played with both in personal projects, and done a bit of each at work too (although not as much as I&#8217;d like), and have wondered how to bring the best of both together. At DDD10 yesterday I attended <a href="https://twitter.com/neilbarnwell">Neil Barnwell</a>&#8217;s <a href="http://developerdeveloperdeveloper.com/ddd10/ViewSession.aspx?SessionID=927">CQRS and Event Sourcing&#8230; how do I actually DO it?</a> and <a href="https://twitter.com/jjrdk">Jacob Reimers</a>&#8217; <a href="http://developerdeveloperdeveloper.com/ddd10/ViewSession.aspx?SessionID=950">Taking REST beyond the pretty URL</a>. In the latter Neil asked this very question, which got me thinking about it again.</p>
 
 <p>After a bit of discussion on Twitter, Neil identified the problem as this:</p>
 
 <div class='embed tweet'><blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/graemef">graemef</a> @<a href="https://twitter.com/jjrdk">jjrdk</a> Indeed. Problem is the HTTP verbs date back to when CRUD was all we had cos we were just replicating paper filing systems.</p>&mdash; Neil Barnwell (@neilbarnwell) <a href="https://twitter.com/neilbarnwell/status/242192811892539393">September 2, 2012</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+<script async src="http://graemef.com//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
 
 
 <p>CQRS with event sourcing only really comes into its own with a task-based UI; instead of simply updating (in the CRUD sense) a customer&#8217;s address you would send a command saying the customer is moving to a different address, or perhaps a different command if merely correcting a typo in their current address. This captures the intent as well as the change, which allows for far more interesting things to happen later on as that intent is captured in the event raised as a result of processing the command.</p>
@@ -184,48 +67,21 @@ So I&#8217;m not a big fan of that idea.</p>
 <p>Jacob has another:</p>
 
 <div class='embed tweet'><blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/neilbarnwell">neilbarnwell</a> @<a href="https://twitter.com/graemef">graemef</a> It&#8217;s true that it requires some careful modelling, but they are not inherently mismatched.</p>&mdash; Jacob Reimers (@jjrdk) <a href="https://twitter.com/jjrdk/status/242216243678040064">September 2, 2012</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+<script async src="http://graemef.com//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
 
 
 <p>It could be that this is the answer, but as it&#8217;s solving the problem one command at a time I&#8217;m not sure yet. For example, instead of having a single address resource for a customer that we PUT a new address to (therefore failing to capture the intent), we could have a collection of addresses that we POST a new address resource to if the customer moves, or we could amend a mistake in an existing address with a PUT on the resource for that address. It&#8217;s debatable whether or not that is adequate to capture the intent, but maybe with some more tweaks it could.</p>
 
 <p>I&#8217;d be interested to hear how other people have tackled this&#8230;</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/17/Framework-switcheroo/">Framework Switcheroo</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-17T04:39:00+00:00" pubdate data-updated="true">Feb 17<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Following on from my <a href="http://graemef.com/42600017">mocking framework comparison</a>, I changed
+  <entry>
+    <title type="html"><![CDATA[Framework switcheroo]]></title>
+    <link href="http://graemef.com/blog/2011/02/17/Framework-switcheroo/"/>
+    <updated>2011-02-17T04:39:00+00:00</updated>
+    <id>http://graemef.com/blog/2011/02/17/Framework-switcheroo</id>
+    <content type="html"><![CDATA[<p>Following on from my <a href="http://graemef.com/42600017">mocking framework comparison</a>, I changed
 <a href="https://github.com/GraemeF/Twiddler">Twiddler</a> (my pet Twitter client
 project) from <a href="http://moq.me">Moq</a> to
 <a href="http://nsubstitute.github.com/">NSubstitute</a>, and from
@@ -240,42 +96,15 @@ greatly improved readability of my tests.</p>
 <li><a href="https://github.com/GraemeF/Twiddler/commit/d34993a656c2655ff690eaacb57b81e490861b84">xUnit.net Assert → Should.Fluent</a></li>
 </ul>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/">A Quick Comparison of Some .NET Mocking Frameworks</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-10T07:01:00+00:00" pubdate data-updated="true">Feb 10<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>What&#8217;s the collective noun for mocking frameworks? If there is one, then
+  <entry>
+    <title type="html"><![CDATA[A quick comparison of some .NET mocking frameworks]]></title>
+    <link href="http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/"/>
+    <updated>2011-02-10T07:01:00+00:00</updated>
+    <id>http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks</id>
+    <content type="html"><![CDATA[<p>What&#8217;s the collective noun for mocking frameworks? If there is one, then
 .NET has it!</p>
 
 <p>I&#8217;ve used Moq for years but I&#8217;m always keen to make my tests more
@@ -432,42 +261,15 @@ real project.</p>
 
 <p>It&#8217;s amazing how far mocking frameworks have come in the last couple of
 years!</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/02/15/Dont-jump-the-red-light/">Don&#8217;t Jump the Red Light!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-15T20:29:00+00:00" pubdate data-updated="true">Feb 15<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There’s a good reason why the <a href="http://en.wikipedia.org/wiki/Test-driven_development">test-driven development cycle</a> says you
+  <entry>
+    <title type="html"><![CDATA[Don't jump the red light!]]></title>
+    <link href="http://graemef.com/blog/2010/02/15/Dont-jump-the-red-light/"/>
+    <updated>2010-02-15T20:29:00+00:00</updated>
+    <id>http://graemef.com/blog/2010/02/15/Dont-jump-the-red-light</id>
+    <content type="html"><![CDATA[<p>There’s a good reason why the <a href="http://en.wikipedia.org/wiki/Test-driven_development">test-driven development cycle</a> says you
 should always watch a test fail before you write the production code
 that makes it pass. I was taught a lesson in this today, “school of hard
 knocks” style…</p>
@@ -594,42 +396,15 @@ these steps over and over again, but they are all there for a reason –
 <em>to stop us writing code that doesn’t do what we think it does</em>. I will
 be trying especially hard to stick to the steps, but we’ll have to wait
 and see how it goes.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/">How I&#8217;m Growing Object-Oriented Software, Guided by Tests</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-08T20:22:00+00:00" pubdate data-updated="true">Feb 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software, Guided by Tests</a>
+  <entry>
+    <title type="html"><![CDATA[How I'm Growing Object-Oriented Software, Guided By Tests]]></title>
+    <link href="http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/"/>
+    <updated>2010-02-08T20:22:00+00:00</updated>
+    <id>http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests</id>
+    <content type="html"><![CDATA[<p><a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software, Guided by Tests</a>
 by <a href="http://www.m3p.co.uk/">Steve Freeman</a> and <a href="http://www.natpryce.com/">Nat Pryce</a> is a book about test-driven
 development. Here are a few notes on my experiences of following its
 methods.</p>
@@ -675,133 +450,7 @@ design is much better than anything I have produced before, and that I
 have far fewer bugs than usual, too :) So this experience has been
 nothing short of (professional) life-changing. I have read similar stuff
 before, but <em>GOOS</em> was the one that finally made me “get it.”</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/04/30/new-home/">New home</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/09/02/Reconciling-ReST-and-CQRS/">Reconciling ReST, CQRS and Event Sourcing</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/02/17/Framework-switcheroo/">Framework switcheroo</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/">A quick comparison of some .NET mocking frameworks</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2010/02/15/Dont-jump-the-red-light/">Don&#8217;t jump the red light!</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/GraemeF">@GraemeF</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'GraemeF',
-            count: 5,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-<section>
-  <h1>On Delicious</h1>
-  <div id="delicious"></div>
-  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/GraemeF?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
-  <p><a href="http://delicious.com/GraemeF">My Delicious Bookmarks &raquo;</a></p>
-</section>
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Graeme Foster -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'GraemeF';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>

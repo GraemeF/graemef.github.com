@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>A quick comparison of some .NET mocking frameworks - GraemeF.com</title>
+  <meta name="author" content="Graeme Foster">
+
+  
+  <meta name="description" content="What&#8217;s the collective noun for mocking frameworks? If there is one, then
+.NET has it! I&#8217;ve used Moq for years but I&#8217;m always keen &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="GraemeF.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1814201-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">GraemeF.com</a></h1>
+  
+    <h2>There's nothing quite like whinging in public</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:graemef.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">A Quick Comparison of Some .NET Mocking Frameworks</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-10T07:01:00+00:00" pubdate data-updated="true">Feb 10<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>What&#8217;s the collective noun for mocking frameworks? If there is one, then
+.NET has it!</p>
+
+<p>I&#8217;ve used Moq for years but I&#8217;m always keen to make my tests more
+readable, so I thought it was time to compare some of the modern
+alternatives and see how they perform in a test fixture plucked almost
+at random from a project I recently worked on. So, here are the same
+tests using fakes from <a href="http://moq.me">Moq</a>,
+<a href="http://nsubstitute.github.com/">NSubstitute</a> and
+<a href="http://code.google.com/p/fakeiteasy/">FakeItEasy</a>, all of which are
+available from the <a href="http://nuget.org/">NuGet</a> gallery. If there&#8217;s
+another hot framework you think compares well then let me know and I&#8217;ll
+try it out too.</p>
+
+<p><strong>Disclaimer</strong>: I&#8217;m quite familar with Moq but this is my first time
+with NSubstitute and FakeItEasy, so I&#8217;m not necesarily using the best
+option for these frameworks. If you spot something that would be better
+done in another way, fork the Gist on GitHub and let me know!</p>
+
+<h2>Setup</h2>
+
+<p>I use <a href="http://xunit.codeplex.com/">xUnit.net</a> which works slightly
+differently to most of the other test frameworks: it creates a new
+instance of your test fixture class for each test, which allows you to
+use field initializers and a constructor to set up your fakes. I take
+advantage of this in the following snippets.</p>
+
+<h3>Moq</h3>
+
+<p>Most of the time we can use a LINQ query to set up a fake with Moq. This
+leads to nice and clean test set up as it can be done from a field
+initializer if you have setup that applies to all the tests in the
+fixture:</p>
+
+<div><script src='https://gist.github.com/820677.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>Quite succinct, no constructor needed, but a little bit ugly.</p>
+
+<h3>NSubstitute</h3>
+
+<p>The instantiation of the fakes is very similar to Moq, but there is no
+equivalent to the LINQ setup so we need a constructor:</p>
+
+<div><script src='https://gist.github.com/820679.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>I find this very readable, and it&#8217;s probably easier to understand than
+the LINQ setup.</p>
+
+<h3>FakeItEasy</h3>
+
+<p>Slightly different take on instantiation, and again the setup needs to
+be done in a constructor:</p>
+
+<div><script src='https://gist.github.com/820697.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>The setup reads well, but is verbose when compared to NSubstitute.</p>
+
+<h2>Verification</h2>
+
+<p>In the following snippets we have a field referencing the fake object,
+and we want to verify that a method was called on it.</p>
+
+<h3>Moq</h3>
+
+<p>We get the <code>Mock</code> for the fake object and verify:</p>
+
+<div><script src='https://gist.github.com/820728.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>Getting the <code>Mock</code> degrades readability a bit, but not bad.</p>
+
+<h3>NSubstitute</h3>
+
+<div><script src='https://gist.github.com/820753.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>Wow. Couldn&#8217;t really be any shorter, could it? My only criticism is that
+it doesn&#8217;t scream &#8220;ASSERTION!!!&#8221; to me.</p>
+
+<h3>FakeItEasy</h3>
+
+<div><script src='https://gist.github.com/820737.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>I like the way the fake is incorporated into the the call, it&#8217;s much
+less intrusive than Moq. Ending with <code>MustHaveHappened</code> makes a pretty
+clear statement that verification is happening here.</p>
+
+<h2>Raising an event</h2>
+
+<p>In this test I want to check that the presenter raises its
+<code>PropertyChanged</code> event when the model&#8217;s <code>PropertyChanged</code> event is
+raised. I&#8217;m making use of a <a href="https://caliburn.svn.codeplex.com/svn/trunk/src/Caliburn.Testability/Extensions/PropertyAssertionExtensions.cs">handy extension method from
+Caliburn.Testability</a>
+that lets me write
+<code>AssertThatChangeNotificationIsRaisedBy([property]).When([something happens])</code>.
+In this case <em><code>[something happens]</code></em> is going to be the
+<code>PropertyChanged</code> event being raised on the model, and we&#8217;re going to
+see how that is done with the different mocking frameworks.</p>
+
+<p>In the interests of staying DRY, I usually make an extension method of
+my own to raise <code>PropertyChanged</code>, but I won&#8217;t here so we can see how
+the frameworks work!</p>
+
+<h3>Moq</h3>
+
+<p>Again we have to get the <code>Mock</code>, then we call <code>Raise</code> on it:</p>
+
+<div><script src='https://gist.github.com/820766.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>Still not keen on getting the <code>Mock</code>, and it&#8217;s a shame we have to write
+<code>+= null</code> just to make a valid expression. Bit long and nasty.</p>
+
+<h3>NSubstitute</h3>
+
+<div><script src='https://gist.github.com/820791.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>So close to being very nice, but spoiled by having to supply the generic
+argument to <code>Raise</code>. This <a href="http://nsubstitute.github.com/help/raising-events/">isn&#8217;t always the case</a>, but as the
+<code>PropertyChanged</code> event is declared with a delegate it&#8217;s necessary here.
+Still, it reads fairly well, certainly better than having <code>+= null</code> in
+the middle.</p>
+
+<h3>FakeItEasy</h3>
+
+<div><script src='https://gist.github.com/820810.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+
+
+<p>A lot shorter than NSubstitute and more readable than Moq, I think
+that&#8217;s quite good. Although at first glance the <code>Now</code> on the end seems a
+bit odd.</p>
+
+<h2>Conclusion</h2>
+
+<p>Each of these frameworks has a lot more to offer than I&#8217;ve touched on
+here, covering just about anything you could do to an object (and
+probably a few things you wouldn&#8217;t want to!). I wanted to see what the
+basic, everyday scenarios look like as those are the ones that really
+matter to me, and after this I will definitely try NSubstitute out on a
+real project.</p>
+
+<p>It&#8217;s amazing how far mocking frameworks have come in the last couple of
+years!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Graeme Foster</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-10T07:01:00+00:00" pubdate data-updated="true">Feb 10<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/dot-net/'>.net</a>, <a class='category' href='/blog/categories/mocking/'>mocking</a>, <a class='category' href='/blog/categories/tdd/'>tdd</a>, <a class='category' href='/blog/categories/tools/'>tools</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/" data-via="GraemeF" data-counturl="http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/02/15/Dont-jump-the-red-light/" title="Previous Post: Don't jump the red light!">&laquo; Don't jump the red light!</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/02/17/Framework-switcheroo/" title="Next Post: Framework switcheroo">Framework switcheroo &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/30/new-home/">New home</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/02/Reconciling-ReST-and-CQRS/">Reconciling ReST, CQRS and Event Sourcing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/17/Framework-switcheroo/">Framework switcheroo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/">A quick comparison of some .NET mocking frameworks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/02/15/Dont-jump-the-red-light/">Don't jump the red light!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/GraemeF">@GraemeF</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'GraemeF',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/GraemeF?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/GraemeF">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Graeme Foster -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'GraemeF';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/';
+        var disqus_url = 'http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How I'm Growing Object-Oriented Software, Guided By Tests - GraemeF.com</title>
+  <meta name="author" content="Graeme Foster">
+
+  
+  <meta name="description" content="Growing Object-Oriented Software, Guided by Tests
+by Steve Freeman and Nat Pryce is a book about test-driven
+development. Here are a few notes on my &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="GraemeF.com" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1814201-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">GraemeF.com</a></h1>
+  
+    <h2>There's nothing quite like whinging in public</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:graemef.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How I'm Growing Object-Oriented Software, Guided by Tests</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-08T20:22:00+00:00" pubdate data-updated="true">Feb 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software, Guided by Tests</a>
+by <a href="http://www.m3p.co.uk/">Steve Freeman</a> and <a href="http://www.natpryce.com/">Nat Pryce</a> is a book about test-driven
+development. Here are a few notes on my experiences of following its
+methods.</p>
+
+<h3>The Story So Far</h3>
+
+<p>I was fortunate enough to start work on a new desktop application in the
+middle of last year, around the time I read through the freely-available
+online version of the book before it was finally published in November.
+This was an ideal opportunity to put TDD into practice so I started by
+building a “walking skeleton” using
+<a href="http://www.codeplex.com/CompositeWPF">Prism</a>,
+<a href="http://confluence.public.thoughtworks.org/display/CCNET/Welcome+to+CruiseControl.NET">CruiseControl.NET</a>,
+<a href="http://wix.sourceforge.net/">WiX</a>, <a href="http://www.gallio.org/">Gallio</a>,
+<a href="http://www.mbunit.com/">MbUnit</a>, <a href="http://www.ncover.com/">NCover</a> and
+<a href="http://white.codeplex.com/">White</a> as a wrapper around <a href="http://msdn.microsoft.com/en-us/library/ms747327.aspx">UI
+Automation</a> for
+the acceptance tests, and took it from there. I’ll admit that there was
+a slow start (WPF/Prism and White/UI Automation were new to me too) but
+development speed has been steadily increasing ever since, and now I’m
+able to get what feels like a lot done each day. And that’s pretty much
+<em>every</em> day; it’s been a long time since I’ve had to halt progress for a
+significant amount of time in order to squash a bug or redo a chunk of
+work.</p>
+
+<h3>Where am I now?</h3>
+
+<p>I’m still learning. It’s easy to slip back into changing code then
+updating the tests to match, and I do find myself doing that sometimes.
+I’m also finding it hard to perform only one refactoring step at a time
+(oh, let me just rename that class while I’m here…), and the acceptance
+tests can be brittle and sometimes feel like a burden to write. But what
+doesn’t kill you makes you stronger, right? It’s getting noticeably
+easier as I learn and improve, and every bit of pain along the way has
+been worth it.</p>
+
+<h3>Does it work?</h3>
+
+<p>For me, <strong>yes</strong>. Test-driven development feels <em>so right</em> that I don’t
+think I could ever go back to hacking stuff together without building
+the safety net of tests to fall back on as I go. I am sure that my
+design is much better than anything I have produced before, and that I
+have far fewer bugs than usual, too :) So this experience has been
+nothing short of (professional) life-changing. I have read similar stuff
+before, but <em>GOOS</em> was the one that finally made me “get it.”</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Graeme Foster</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-08T20:22:00+00:00" pubdate data-updated="true">Feb 8<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/goos/'>goos</a>, <a class='category' href='/blog/categories/tdd/'>tdd</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/" data-via="GraemeF" data-counturl="http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/02/15/Dont-jump-the-red-light/" title="Next Post: Don't jump the red light!">Don't jump the red light! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/30/new-home/">New home</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/02/Reconciling-ReST-and-CQRS/">Reconciling ReST, CQRS and Event Sourcing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/17/Framework-switcheroo/">Framework switcheroo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/">A quick comparison of some .NET mocking frameworks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/02/15/Dont-jump-the-red-light/">Don't jump the red light!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/GraemeF">@GraemeF</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'GraemeF',
+            count: 5,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/GraemeF?count=3&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/GraemeF">My Delicious Bookmarks &raquo;</a></p>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Graeme Foster -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'GraemeF';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/';
+        var disqus_url = 'http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

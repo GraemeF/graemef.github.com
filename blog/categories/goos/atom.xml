@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: goos | GraemeF.com]]></title>
+  <link href="http://graemef.com/blog/categories/goos/atom.xml" rel="self"/>
+  <link href="http://graemef.com/"/>
+  <updated>2013-04-30T22:12:10+01:00</updated>
+  <id>http://graemef.com/</id>
+  <author>
+    <name><![CDATA[Graeme Foster]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How I'm Growing Object-Oriented Software, Guided By Tests]]></title>
+    <link href="http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/"/>
+    <updated>2010-02-08T20:22:00+00:00</updated>
+    <id>http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests</id>
+    <content type="html"><![CDATA[<p><a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software, Guided by Tests</a>
+by <a href="http://www.m3p.co.uk/">Steve Freeman</a> and <a href="http://www.natpryce.com/">Nat Pryce</a> is a book about test-driven
+development. Here are a few notes on my experiences of following its
+methods.</p>
+
+<h3>The Story So Far</h3>
+
+<p>I was fortunate enough to start work on a new desktop application in the
+middle of last year, around the time I read through the freely-available
+online version of the book before it was finally published in November.
+This was an ideal opportunity to put TDD into practice so I started by
+building a “walking skeleton” using
+<a href="http://www.codeplex.com/CompositeWPF">Prism</a>,
+<a href="http://confluence.public.thoughtworks.org/display/CCNET/Welcome+to+CruiseControl.NET">CruiseControl.NET</a>,
+<a href="http://wix.sourceforge.net/">WiX</a>, <a href="http://www.gallio.org/">Gallio</a>,
+<a href="http://www.mbunit.com/">MbUnit</a>, <a href="http://www.ncover.com/">NCover</a> and
+<a href="http://white.codeplex.com/">White</a> as a wrapper around <a href="http://msdn.microsoft.com/en-us/library/ms747327.aspx">UI
+Automation</a> for
+the acceptance tests, and took it from there. I’ll admit that there was
+a slow start (WPF/Prism and White/UI Automation were new to me too) but
+development speed has been steadily increasing ever since, and now I’m
+able to get what feels like a lot done each day. And that’s pretty much
+<em>every</em> day; it’s been a long time since I’ve had to halt progress for a
+significant amount of time in order to squash a bug or redo a chunk of
+work.</p>
+
+<h3>Where am I now?</h3>
+
+<p>I’m still learning. It’s easy to slip back into changing code then
+updating the tests to match, and I do find myself doing that sometimes.
+I’m also finding it hard to perform only one refactoring step at a time
+(oh, let me just rename that class while I’m here…), and the acceptance
+tests can be brittle and sometimes feel like a burden to write. But what
+doesn’t kill you makes you stronger, right? It’s getting noticeably
+easier as I learn and improve, and every bit of pain along the way has
+been worth it.</p>
+
+<h3>Does it work?</h3>
+
+<p>For me, <strong>yes</strong>. Test-driven development feels <em>so right</em> that I don’t
+think I could ever go back to hacking stuff together without building
+the safety net of tests to fall back on as I go. I am sure that my
+design is much better than anything I have produced before, and that I
+have far fewer bugs than usual, too :) So this experience has been
+nothing short of (professional) life-changing. I have read similar stuff
+before, but <em>GOOS</em> was the one that finally made me “get it.”</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: .net | GraemeF.com]]></title>
+  <link href="http://graemef.com/blog/categories/dot-net/atom.xml" rel="self"/>
+  <link href="http://graemef.com/"/>
+  <updated>2013-04-30T22:12:10+01:00</updated>
+  <id>http://graemef.com/</id>
+  <author>
+    <name><![CDATA[Graeme Foster]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Framework switcheroo]]></title>
+    <link href="http://graemef.com/blog/2011/02/17/Framework-switcheroo/"/>
+    <updated>2011-02-17T04:39:00+00:00</updated>
+    <id>http://graemef.com/blog/2011/02/17/Framework-switcheroo</id>
+    <content type="html"><![CDATA[<p>Following on from my <a href="http://graemef.com/42600017">mocking framework comparison</a>, I changed
+<a href="https://github.com/GraemeF/Twiddler">Twiddler</a> (my pet Twitter client
+project) from <a href="http://moq.me">Moq</a> to
+<a href="http://nsubstitute.github.com/">NSubstitute</a>, and from
+<a href="http://xunit.codeplex.com/">xUnit.net</a>'s built-in Asserts to
+<a href="http://should.codeplex.com/">Should.Fluent</a>, and I think both changes
+greatly improved readability of my tests.</p>
+
+<p>Full diffs are here for comparison:</p>
+
+<ul>
+<li><a href="https://github.com/GraemeF/Twiddler/commit/6527ef85f36bef51b3db96c94b648148b39fb697">Moq → NSubstitute</a></li>
+<li><a href="https://github.com/GraemeF/Twiddler/commit/d34993a656c2655ff690eaacb57b81e490861b84">xUnit.net Assert → Should.Fluent</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A quick comparison of some .NET mocking frameworks]]></title>
+    <link href="http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/"/>
+    <updated>2011-02-10T07:01:00+00:00</updated>
+    <id>http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks</id>
+    <content type="html"><![CDATA[<p>What's the collective noun for mocking frameworks? If there is one, then
+.NET has it!</p>
+
+<p>I've used Moq for years but I'm always keen to make my tests more
+readable, so I thought it was time to compare some of the modern
+alternatives and see how they perform in a test fixture plucked almost
+at random from a project I recently worked on. So, here are the same
+tests using fakes from <a href="http://moq.me">Moq</a>,
+<a href="http://nsubstitute.github.com/">NSubstitute</a> and
+<a href="http://code.google.com/p/fakeiteasy/">FakeItEasy</a>, all of which are
+available from the <a href="http://nuget.org/">NuGet</a> gallery. If there's
+another hot framework you think compares well then let me know and I'll
+try it out too.</p>
+
+<p><strong>Disclaimer</strong>: I'm quite familar with Moq but this is my first time
+with NSubstitute and FakeItEasy, so I'm not necesarily using the best
+option for these frameworks. If you spot something that would be better
+done in another way, fork the Gist on GitHub and let me know!</p>
+
+<h2>Setup</h2>
+
+<p>I use <a href="http://xunit.codeplex.com/">xUnit.net</a> which works slightly
+differently to most of the other test frameworks: it creates a new
+instance of your test fixture class for each test, which allows you to
+use field initializers and a constructor to set up your fakes. I take
+advantage of this in the following snippets.</p>
+
+<h3>Moq</h3>
+
+<p>Most of the time we can use a LINQ query to set up a fake with Moq. This
+leads to nice and clean test set up as it can be done from a field
+initializer if you have setup that applies to all the tests in the
+fixture:</p>
+
+<p><div><script src='https://gist.github.com/820677.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>Quite succinct, no constructor needed, but a little bit ugly.</p>
+
+<h3>NSubstitute</h3>
+
+<p>The instantiation of the fakes is very similar to Moq, but there is no
+equivalent to the LINQ setup so we need a constructor:</p>
+
+<p><div><script src='https://gist.github.com/820679.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>I find this very readable, and it's probably easier to understand than
+the LINQ setup.</p>
+
+<h3>FakeItEasy</h3>
+
+<p>Slightly different take on instantiation, and again the setup needs to
+be done in a constructor:</p>
+
+<p><div><script src='https://gist.github.com/820697.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>The setup reads well, but is verbose when compared to NSubstitute.</p>
+
+<h2>Verification</h2>
+
+<p>In the following snippets we have a field referencing the fake object,
+and we want to verify that a method was called on it.</p>
+
+<h3>Moq</h3>
+
+<p>We get the <code>Mock</code> for the fake object and verify:</p>
+
+<p><div><script src='https://gist.github.com/820728.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>Getting the <code>Mock</code> degrades readability a bit, but not bad.</p>
+
+<h3>NSubstitute</h3>
+
+<p><div><script src='https://gist.github.com/820753.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>Wow. Couldn't really be any shorter, could it? My only criticism is that
+it doesn't scream "ASSERTION!!!" to me.</p>
+
+<h3>FakeItEasy</h3>
+
+<p><div><script src='https://gist.github.com/820737.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>I like the way the fake is incorporated into the the call, it's much
+less intrusive than Moq. Ending with <code>MustHaveHappened</code> makes a pretty
+clear statement that verification is happening here.</p>
+
+<h2>Raising an event</h2>
+
+<p>In this test I want to check that the presenter raises its
+<code>PropertyChanged</code> event when the model's <code>PropertyChanged</code> event is
+raised. I'm making use of a <a href="https://caliburn.svn.codeplex.com/svn/trunk/src/Caliburn.Testability/Extensions/PropertyAssertionExtensions.cs">handy extension method from
+Caliburn.Testability</a>
+that lets me write
+<code>AssertThatChangeNotificationIsRaisedBy([property]).When([something happens])</code>.
+In this case <em><code>[something happens]</code></em> is going to be the
+<code>PropertyChanged</code> event being raised on the model, and we're going to
+see how that is done with the different mocking frameworks.</p>
+
+<p>In the interests of staying DRY, I usually make an extension method of
+my own to raise <code>PropertyChanged</code>, but I won't here so we can see how
+the frameworks work!</p>
+
+<h3>Moq</h3>
+
+<p>Again we have to get the <code>Mock</code>, then we call <code>Raise</code> on it:</p>
+
+<p><div><script src='https://gist.github.com/820766.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>Still not keen on getting the <code>Mock</code>, and it's a shame we have to write
+<code>+= null</code> just to make a valid expression. Bit long and nasty.</p>
+
+<h3>NSubstitute</h3>
+
+<p><div><script src='https://gist.github.com/820791.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>So close to being very nice, but spoiled by having to supply the generic
+argument to <code>Raise</code>. This <a href="http://nsubstitute.github.com/help/raising-events/">isn't always the case</a>, but as the
+<code>PropertyChanged</code> event is declared with a delegate it's necessary here.
+Still, it reads fairly well, certainly better than having <code>+= null</code> in
+the middle.</p>
+
+<h3>FakeItEasy</h3>
+
+<p><div><script src='https://gist.github.com/820810.js'></script>
+<noscript><pre><code></code></pre></noscript></div>
+</p>
+
+<p>A lot shorter than NSubstitute and more readable than Moq, I think
+that's quite good. Although at first glance the <code>Now</code> on the end seems a
+bit odd.</p>
+
+<h2>Conclusion</h2>
+
+<p>Each of these frameworks has a lot more to offer than I've touched on
+here, covering just about anything you could do to an object (and
+probably a few things you wouldn't want to!). I wanted to see what the
+basic, everyday scenarios look like as those are the ones that really
+matter to me, and after this I will definitely try NSubstitute out on a
+real project.</p>
+
+<p>It's amazing how far mocking frameworks have come in the last couple of
+years!</p>
+]]></content>
+  </entry>
+  
+</feed>
