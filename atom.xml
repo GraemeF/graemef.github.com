@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[GraemeF.com]]></title>
-  <link href="http://graemef.com/atom.xml" rel="self"/>
-  <link href="http://graemef.com/"/>
-  <updated>2013-04-30T22:12:10+01:00</updated>
-  <id>http://graemef.com/</id>
+  <link href="http://GraemeF.github.io/atom.xml" rel="self"/>
+  <link href="http://GraemeF.github.io/"/>
+  <updated>2013-04-30T22:40:01+01:00</updated>
+  <id>http://GraemeF.github.io/</id>
   <author>
     <name><![CDATA[Graeme Foster]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[New home]]></title>
-    <link href="http://graemef.com/blog/2013/04/30/new-home/"/>
+    <link href="http://GraemeF.github.io/blog/2013/04/30/new-home/"/>
     <updated>2013-04-30T20:28:00+01:00</updated>
-    <id>http://graemef.com/blog/2013/04/30/new-home</id>
+    <id>http://GraemeF.github.io/blog/2013/04/30/new-home</id>
     <content type="html"><![CDATA[<p>Thanks to this being <a href="http://blog.posterous.com/thanks-from-posterous">Posterous&#8217; last day</a> I&#8217;m
 spending the evening moving my blog to <a href="http://octopress.org/">Octopress</a>, hosted on
 Github.</p>
@@ -29,9 +29,9 @@ arduous than it might otherwise have been.</p>
   
   <entry>
     <title type="html"><![CDATA[Reconciling ReST, CQRS and Event Sourcing]]></title>
-    <link href="http://graemef.com/blog/2012/09/02/Reconciling-ReST-and-CQRS/"/>
+    <link href="http://GraemeF.github.io/blog/2012/09/02/Reconciling-ReST-and-CQRS/"/>
     <updated>2012-09-02T00:00:00+01:00</updated>
-    <id>http://graemef.com/blog/2012/09/02/Reconciling-ReST-and-CQRS</id>
+    <id>http://GraemeF.github.io/blog/2012/09/02/Reconciling-ReST-and-CQRS</id>
     <content type="html"><![CDATA[<p>I decided to write this post because it was getting really hard to discuss 140 characters at a time on Twitter, and I just want to get some thoughts down before I go looking for other people&#8217;s solution to the problem.</p>
 
 <p>Over the last couple of years I&#8217;ve learned a lot about ReSTful web API&#8217;s (the kind that use HATEOAS, not the namby-pamby &#8220;it&#8217;s HTTP therefore it&#8217;s ReST&#8221; variety) and have also been intrigued by the simplicity of CQRS+ES to address scalability. I&#8217;ve played with both in personal projects, and done a bit of each at work too (although not as much as I&#8217;d like), and have wondered how to bring the best of both together. At DDD10 yesterday I attended <a href="https://twitter.com/neilbarnwell">Neil Barnwell</a>&#8217;s <a href="http://developerdeveloperdeveloper.com/ddd10/ViewSession.aspx?SessionID=927">CQRS and Event Sourcing&#8230; how do I actually DO it?</a> and <a href="https://twitter.com/jjrdk">Jacob Reimers</a>&#8217; <a href="http://developerdeveloperdeveloper.com/ddd10/ViewSession.aspx?SessionID=950">Taking REST beyond the pretty URL</a>. In the latter Neil asked this very question, which got me thinking about it again.</p>
@@ -39,7 +39,7 @@ arduous than it might otherwise have been.</p>
 <p>After a bit of discussion on Twitter, Neil identified the problem as this:</p>
 
 <div class='embed tweet'><blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/graemef">graemef</a> @<a href="https://twitter.com/jjrdk">jjrdk</a> Indeed. Problem is the HTTP verbs date back to when CRUD was all we had cos we were just replicating paper filing systems.</p>&mdash; Neil Barnwell (@neilbarnwell) <a href="https://twitter.com/neilbarnwell/status/242192811892539393">September 2, 2012</a></blockquote>
-<script async src="http://graemef.com//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+<script async src="http://GraemeF.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
 
 
 <p>CQRS with event sourcing only really comes into its own with a task-based UI; instead of simply updating (in the CRUD sense) a customer&#8217;s address you would send a command saying the customer is moving to a different address, or perhaps a different command if merely correcting a typo in their current address. This captures the intent as well as the change, which allows for far more interesting things to happen later on as that intent is captured in the event raised as a result of processing the command.</p>
@@ -67,7 +67,7 @@ So I&#8217;m not a big fan of that idea.</p>
 <p>Jacob has another:</p>
 
 <div class='embed tweet'><blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/neilbarnwell">neilbarnwell</a> @<a href="https://twitter.com/graemef">graemef</a> It&#8217;s true that it requires some careful modelling, but they are not inherently mismatched.</p>&mdash; Jacob Reimers (@jjrdk) <a href="https://twitter.com/jjrdk/status/242216243678040064">September 2, 2012</a></blockquote>
-<script async src="http://graemef.com//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+<script async src="http://GraemeF.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
 
 
 <p>It could be that this is the answer, but as it&#8217;s solving the problem one command at a time I&#8217;m not sure yet. For example, instead of having a single address resource for a customer that we PUT a new address to (therefore failing to capture the intent), we could have a collection of addresses that we POST a new address resource to if the customer moves, or we could amend a mistake in an existing address with a PUT on the resource for that address. It&#8217;s debatable whether or not that is adequate to capture the intent, but maybe with some more tweaks it could.</p>
@@ -78,9 +78,9 @@ So I&#8217;m not a big fan of that idea.</p>
   
   <entry>
     <title type="html"><![CDATA[Framework switcheroo]]></title>
-    <link href="http://graemef.com/blog/2011/02/17/Framework-switcheroo/"/>
+    <link href="http://GraemeF.github.io/blog/2011/02/17/Framework-switcheroo/"/>
     <updated>2011-02-17T04:39:00+00:00</updated>
-    <id>http://graemef.com/blog/2011/02/17/Framework-switcheroo</id>
+    <id>http://GraemeF.github.io/blog/2011/02/17/Framework-switcheroo</id>
     <content type="html"><![CDATA[<p>Following on from my <a href="http://graemef.com/42600017">mocking framework comparison</a>, I changed
 <a href="https://github.com/GraemeF/Twiddler">Twiddler</a> (my pet Twitter client
 project) from <a href="http://moq.me">Moq</a> to
@@ -101,9 +101,9 @@ greatly improved readability of my tests.</p>
   
   <entry>
     <title type="html"><![CDATA[A quick comparison of some .NET mocking frameworks]]></title>
-    <link href="http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/"/>
+    <link href="http://GraemeF.github.io/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/"/>
     <updated>2011-02-10T07:01:00+00:00</updated>
-    <id>http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks</id>
+    <id>http://GraemeF.github.io/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks</id>
     <content type="html"><![CDATA[<p>What&#8217;s the collective noun for mocking frameworks? If there is one, then
 .NET has it!</p>
 
@@ -266,9 +266,9 @@ years!</p>
   
   <entry>
     <title type="html"><![CDATA[Don't jump the red light!]]></title>
-    <link href="http://graemef.com/blog/2010/02/15/Dont-jump-the-red-light/"/>
+    <link href="http://GraemeF.github.io/blog/2010/02/15/Dont-jump-the-red-light/"/>
     <updated>2010-02-15T20:29:00+00:00</updated>
-    <id>http://graemef.com/blog/2010/02/15/Dont-jump-the-red-light</id>
+    <id>http://GraemeF.github.io/blog/2010/02/15/Dont-jump-the-red-light</id>
     <content type="html"><![CDATA[<p>There’s a good reason why the <a href="http://en.wikipedia.org/wiki/Test-driven_development">test-driven development cycle</a> says you
 should always watch a test fail before you write the production code
 that makes it pass. I was taught a lesson in this today, “school of hard
@@ -401,9 +401,9 @@ and see how it goes.</p>
   
   <entry>
     <title type="html"><![CDATA[How I'm Growing Object-Oriented Software, Guided By Tests]]></title>
-    <link href="http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/"/>
+    <link href="http://GraemeF.github.io/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests/"/>
     <updated>2010-02-08T20:22:00+00:00</updated>
-    <id>http://graemef.com/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests</id>
+    <id>http://GraemeF.github.io/blog/2010/02/08/How-Im-Growing-Object-Oriented-Software-Guided-By-Tests</id>
     <content type="html"><![CDATA[<p><a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software, Guided by Tests</a>
 by <a href="http://www.m3p.co.uk/">Steve Freeman</a> and <a href="http://www.natpryce.com/">Nat Pryce</a> is a book about test-driven
 development. Here are a few notes on my experiences of following its

@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://graemef.com/sitemap.xml 
+Sitemap: http://GraemeF.github.io/sitemap.xml 

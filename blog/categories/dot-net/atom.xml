@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: .net | GraemeF.com]]></title>
-  <link href="http://graemef.com/blog/categories/dot-net/atom.xml" rel="self"/>
-  <link href="http://graemef.com/"/>
-  <updated>2013-04-30T22:12:10+01:00</updated>
-  <id>http://graemef.com/</id>
+  <link href="http://GraemeF.github.io/blog/categories/dot-net/atom.xml" rel="self"/>
+  <link href="http://GraemeF.github.io/"/>
+  <updated>2013-04-30T22:40:01+01:00</updated>
+  <id>http://GraemeF.github.io/</id>
   <author>
     <name><![CDATA[Graeme Foster]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Framework switcheroo]]></title>
-    <link href="http://graemef.com/blog/2011/02/17/Framework-switcheroo/"/>
+    <link href="http://GraemeF.github.io/blog/2011/02/17/Framework-switcheroo/"/>
     <updated>2011-02-17T04:39:00+00:00</updated>
-    <id>http://graemef.com/blog/2011/02/17/Framework-switcheroo</id>
+    <id>http://GraemeF.github.io/blog/2011/02/17/Framework-switcheroo</id>
     <content type="html"><![CDATA[<p>Following on from my <a href="http://graemef.com/42600017">mocking framework comparison</a>, I changed
 <a href="https://github.com/GraemeF/Twiddler">Twiddler</a> (my pet Twitter client
 project) from <a href="http://moq.me">Moq</a> to
@@ -38,9 +38,9 @@ greatly improved readability of my tests.</p>
   
   <entry>
     <title type="html"><![CDATA[A quick comparison of some .NET mocking frameworks]]></title>
-    <link href="http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/"/>
+    <link href="http://GraemeF.github.io/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/"/>
     <updated>2011-02-10T07:01:00+00:00</updated>
-    <id>http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks</id>
+    <id>http://GraemeF.github.io/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks</id>
     <content type="html"><![CDATA[<p>What's the collective noun for mocking frameworks? If there is one, then
 .NET has it!</p>
 

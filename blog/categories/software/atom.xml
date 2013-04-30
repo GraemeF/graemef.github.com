@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: software | GraemeF.com]]></title>
-  <link href="http://graemef.com/blog/categories/software/atom.xml" rel="self"/>
-  <link href="http://graemef.com/"/>
-  <updated>2013-04-30T22:12:10+01:00</updated>
-  <id>http://graemef.com/</id>
+  <link href="http://GraemeF.github.io/blog/categories/software/atom.xml" rel="self"/>
+  <link href="http://GraemeF.github.io/"/>
+  <updated>2013-04-30T22:40:01+01:00</updated>
+  <id>http://GraemeF.github.io/</id>
   <author>
     <name><![CDATA[Graeme Foster]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Reconciling ReST, CQRS and Event Sourcing]]></title>
-    <link href="http://graemef.com/blog/2012/09/02/Reconciling-ReST-and-CQRS/"/>
+    <link href="http://GraemeF.github.io/blog/2012/09/02/Reconciling-ReST-and-CQRS/"/>
     <updated>2012-09-02T00:00:00+01:00</updated>
-    <id>http://graemef.com/blog/2012/09/02/Reconciling-ReST-and-CQRS</id>
+    <id>http://GraemeF.github.io/blog/2012/09/02/Reconciling-ReST-and-CQRS</id>
     <content type="html"><![CDATA[<p>I decided to write this post because it was getting really hard to discuss 140 characters at a time on Twitter, and I just want to get some thoughts down before I go looking for other people's solution to the problem.</p>
 
 <p>Over the last couple of years I've learned a lot about ReSTful web API's (the kind that use HATEOAS, not the namby-pamby "it's HTTP therefore it's ReST" variety) and have also been intrigued by the simplicity of CQRS+ES to address scalability. I've played with both in personal projects, and done a bit of each at work too (although not as much as I'd like), and have wondered how to bring the best of both together. At DDD10 yesterday I attended <a href="https://twitter.com/neilbarnwell">Neil Barnwell</a>'s <a href="http://developerdeveloperdeveloper.com/ddd10/ViewSession.aspx?SessionID=927">CQRS and Event Sourcing... how do I actually DO it?</a> and <a href="https://twitter.com/jjrdk">Jacob Reimers</a>' <a href="http://developerdeveloperdeveloper.com/ddd10/ViewSession.aspx?SessionID=950">Taking REST beyond the pretty URL</a>. In the latter Neil asked this very question, which got me thinking about it again.</p>

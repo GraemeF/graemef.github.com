@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tools | GraemeF.com]]></title>
-  <link href="http://graemef.com/blog/categories/tools/atom.xml" rel="self"/>
-  <link href="http://graemef.com/"/>
-  <updated>2013-04-30T22:12:10+01:00</updated>
-  <id>http://graemef.com/</id>
+  <link href="http://GraemeF.github.io/blog/categories/tools/atom.xml" rel="self"/>
+  <link href="http://GraemeF.github.io/"/>
+  <updated>2013-04-30T22:40:01+01:00</updated>
+  <id>http://GraemeF.github.io/</id>
   <author>
     <name><![CDATA[Graeme Foster]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[A quick comparison of some .NET mocking frameworks]]></title>
-    <link href="http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/"/>
+    <link href="http://GraemeF.github.io/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks/"/>
     <updated>2011-02-10T07:01:00+00:00</updated>
-    <id>http://graemef.com/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks</id>
+    <id>http://GraemeF.github.io/blog/2011/02/10/A-quick-comparison-of-some-.NET-mocking-frameworks</id>
     <content type="html"><![CDATA[<p>What's the collective noun for mocking frameworks? If there is one, then
 .NET has it!</p>
 
